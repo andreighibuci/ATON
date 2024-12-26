@@ -1,0 +1,42 @@
+﻿<Window x:Class="ATON.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ribbon="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:ATON" 
+        mc:Ignorable="d"
+        Title="ATON" Height="800" Width="1360">
+    <Grid>
+        <!--Specify Main Grid Layout-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4.5*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Menu Ribbon-->
+        <ribbon:Ribbon>
+            <ribbon:RibbonTab Header="Home">
+                <ribbon:RibbonGroup Header="Save">
+                    <ribbon:RibbonButton Label="Save" SmallImageSource="./Resources/SaveImg.png" />
+                    <ribbon:RibbonButton Label="Save All" SmallImageSource="./Resources/SaveImg.png"/>
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup Header="Insert">
+                    <ribbon:RibbonButton Label="Add" SmallImageSource="./Resources/Add.png">
+                    </ribbon:RibbonButton>
+                    <ribbon:RibbonButton Label="Delete" SmallImageSource="./Resources/Delete.png"/>
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup Header="Options">
+                    <ribbon:RibbonButton Label="Connect" SmallImageSource="./Resources/Connect.png"/>
+                    <ribbon:RibbonButton Label="Python"  SmallImageSource="./Resources/Python.png"/>
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+        </ribbon:Ribbon>
+        
+        <!--Project Structure TBD-->
+        
+        <!--Editor View TBD-->
+        
+        
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+
+*.vsidx
+.vs/ATON/v17/DocumentLayout.json
+*.dll
+*.exe
+*.so
+*.dylib
+/ATON/obj
+/.vs
