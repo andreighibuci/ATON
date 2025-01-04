@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ATON.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,14 @@ namespace ATON
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private MainWindowViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
+            viewModel = new MainWindowViewModel();
+            DataContext = viewModel;
+
         }
     }
 }

@@ -34,7 +34,35 @@
         </ribbon:Ribbon>
         
         <!--Project Structure TBD-->
-        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <!--Project Structure-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <!--Project Editor-->
+                <Grid Grid.Column="0">
+                    <!--To add objects used in project-->
+                    <ListView ItemsSource="{Binding AtonObjects}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="SingleLineDataTemplate" DataType="local:Recording">
+                                <StackPanel Orientation="Horizontal" Height="auto">
+                                    <DockPanel>
+                                        <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Client.Name}"/>
+                                        <Label Content="{Binding Name}"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </Grid>
         <!--Editor View TBD-->
         
         
