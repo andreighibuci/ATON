@@ -17,11 +17,13 @@ namespace ATON
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        //View Model to be injected as DataContext
         private MainWindowViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
+
+            //Initialisation of ViewModel and injection to DataContext for XAML Binding
             viewModel = new MainWindowViewModel();
             DataContext = viewModel;
 

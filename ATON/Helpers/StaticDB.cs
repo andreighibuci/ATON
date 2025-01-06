@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace ATON.Helpers
 {
+
+    //Use Static Database for object containers (not eficient but easy to maintain and use)
     public static class StaticDB
     {
-        public static ObservableCollection<AtonObject> AtonObjects = new ObservableCollection<AtonObject>();
+        //Place holder for all Functons available in App
+        public static ObservableCollection<AtonFunction> Functions = new ObservableCollection<AtonFunction>();
+
+        //Place holder for all Testcases available in App
+        public static ObservableCollection<AtonTestCase> TestCases = new ObservableCollection<AtonTestCase>();
     }
 }

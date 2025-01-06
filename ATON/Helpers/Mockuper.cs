@@ -1,5 +1,6 @@
 ﻿using ATON.Models;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,18 +11,32 @@ namespace ATON.Helpers
 {
     public static class Mockuper
     {
-        //Create Random Objects for populating Project Explorer List
-        public static ObservableCollection<AtonObject> CreateRandObjects()
+        //Create Random Objects for populating Project Explorer List with Functions
+        public static ObservableCollection<AtonFunction> CreateRandFuncs()
         {
-            ObservableCollection<AtonObject> atonObjects = new ObservableCollection<AtonObject>();
+            ObservableCollection<AtonFunction> randomFuncs = new ObservableCollection<AtonFunction>();
 
-            AtonObject Testcase = new AtonObject { 
-                Name = "Test1",
-                Description = "Testing Sth..",
-                AtonObjectType = new AtonTestCase()};
+            randomFuncs.Add(new AtonFunction { Name = "WriteVar" });
+            randomFuncs.Add(new AtonFunction { Name = "WriteVar1" });
+            randomFuncs.Add(new AtonFunction { Name = "WriteVar2" });
 
-            atonObjects.Add(Testcase);
-            return atonObjects;
+
+            return randomFuncs;
+        }
+
+
+        //Create Random Objects for populating Project Explorer List with TestCases
+        public static ObservableCollection<AtonTestCase> CreateRandTestCases()
+        {
+
+            ObservableCollection<AtonTestCase> randomTestcases = new ObservableCollection<AtonTestCase>();
+
+            randomTestcases.Add(new AtonTestCase { Name = "Test1" });
+            randomTestcases.Add(new AtonTestCase { Name = "Test2" });
+            randomTestcases.Add(new AtonTestCase { Name = "Test3" });
+
+
+            return randomTestcases;
 
         }
     }

@@ -7,6 +7,23 @@
         xmlns:local="clr-namespace:ATON" 
         mc:Ignorable="d"
         Title="ATON" Height="800" Width="1360">
+    <!--Define Window Resources -->
+    <Window.Resources>
+        <!--Create Function and Testcases Item Template-->
+        <DataTemplate x:Key="FunctionItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="./Resources/FunctionIcon.png" Width="16" Height="16" Margin="2"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="TestcaseItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="./Resources/TestcaseIcon.png" Width="16" Height="16" Margin="2"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <!--Specify Main Grid Layout-->
         <Grid.RowDefinitions>
@@ -47,20 +64,22 @@
                 </Grid.ColumnDefinitions>
                 <!--Project Editor-->
                 <Grid Grid.Column="0">
-                    <!--To add objects used in project-->
-                    <ListView ItemsSource="{Binding AtonObjects}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:Name="SingleLineDataTemplate" DataType="local:Recording">
-                                <StackPanel Orientation="Horizontal" Height="auto">
-                                    <DockPanel>
-                                        <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Client.Name}"/>
-                                        <Label Content="{Binding Name}"/>
-                                    </DockPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <!--Define Project Editor Space-->
+                    <StackPanel>
+                        <TreeView Margin="10">
+                            <!--Define Functions Objects Placeholder-->
+                            <TreeViewItem Header="Functions" ItemsSource="{Binding Functions}" ItemTemplate="{StaticResource FunctionItemTemplate}">
+                            </TreeViewItem>
+
+                            <!--Define Testcase Objects Placeholder-->
+                            <TreeViewItem Header="Testcases" ItemsSource="{Binding Tests}" ItemTemplate="{StaticResource TestcaseItemTemplate}">
+                            </TreeViewItem>
+                        </TreeView>
+                    </StackPanel>
                 </Grid>
+                <!--Functions-->
+                
+                
             </Grid>
         </Grid>
         <!--Editor View TBD-->

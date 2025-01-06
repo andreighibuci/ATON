@@ -7,8 +7,21 @@ using System.Threading.Tasks;
 
 namespace ATON.Models
 {
-    public class AtonFunction : AtonObjectType
+
+    //AtonFunctions are object designed to contain runnable python code and be used inside TestCases
+    public class AtonFunction 
     {
-        public Image ObjImg { get => new Bitmap("./Resouurces/FunctionIcon.png"); }
+
+       //ATON Function Name 
+       public String Name { get; set; } 
+
+       //ATON Function Description
+       public String Description { get; set; }
+
+
+       //Python Code Container
+       public String PyCode { get; set; } 
+
+        
     }
 }

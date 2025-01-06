@@ -12,39 +12,41 @@ using System.Threading.Tasks;
 
 namespace ATON.ViewModels
 {
+
+    //MainWindow ViewModel
     public class MainWindowViewModel:INotifyPropertyChanged
     {
 
-        //Objects List
-        public ObservableCollection<AtonObject> AtonObjects { get; set; }
+        //List with all available Functions that is automatically updated on delete and add 
+        public ObservableCollection<AtonFunction> Functions { get; set; }
+
+        //List with all availabe Tests that is automatically updated on delete and add
+        public ObservableCollection<AtonTestCase> Tests { get; set; }
 
 
-
-        //Image Setter for UI
-        private Image _image;
-        public Image Image { get { return _image;  } set { _image = value; OnPropertyChanged("Image"); } }
+        //Initialization of Binded Elements
         public MainWindowViewModel()
         {
-            
-            AtonObjects = new ObservableCollection<AtonObject>();
+            //Initialization of Observalbe lists so they can be updated all the time on GUI
+            Functions = new ObservableCollection<AtonFunction>();
+            Tests = new ObservableCollection<AtonTestCase>();
 
-            //Mockuper Use TO DELETE ON REAL USAGE
-            StaticDB.AtonObjects = Mockuper.CreateRandObjects();
+            //Mocking Up List of Functions
+            foreach (var func in Mockuper.CreateRandFuncs()) {
+                Functions.Add(func);   
+            }
 
-            //Initialisation of Editor Objects List
-            foreach (var atonObject in StaticDB.AtonObjects)
+            //Mocking Up List of Testcases
+            foreach (var test in Mockuper.CreateRandTestCases())
             {
-                AtonObjects.Add(atonObject);
+                Tests.Add(test);
             }
 
 
         }
 
 
-
-
-
-        //INotify Implementations
+        //INotify Implementations for notifiying the GUI on Binding values change
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
