@@ -63,6 +63,9 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <!--Project Editor-->
+                <Border BorderThickness="1" BorderBrush="Black">
+                    
+              
                 <Grid Grid.Column="0">
                     <!--Define Project Editor Space-->
                     <StackPanel>
@@ -77,9 +80,11 @@
                         </TreeView>
                     </StackPanel>
                 </Grid>
-                <!--Functions-->
-                
-                
+                </Border>
+                <!--Testcase & Functions Editor Frame-->
+                <Frame Name="EditorFrame" Grid.Column="1">
+                    
+                </Frame>
             </Grid>
         </Grid>
         <!--Editor View TBD-->

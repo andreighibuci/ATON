@@ -16,6 +16,7 @@
     <None Remove="Resources\Delete.png" />
     <None Remove="Resources\FunctionIcon.png" />
     <None Remove="Resources\Python.png" />
+    <None Remove="Resources\Python.xshd" />
     <None Remove="Resources\SaveImg.png" />
     <None Remove="Resources\TestcaseIcon.png" />
   </ItemGroup>
@@ -42,6 +43,9 @@
     <Content Include="Resources\Python.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Resources\Python.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Resources\SaveImg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -51,10 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="9.0.0" />
   </ItemGroup>
 
