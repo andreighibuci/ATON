@@ -17,7 +17,6 @@ namespace ATON.Helpers
             ObservableCollection<AtonFunction> randomFuncs = new ObservableCollection<AtonFunction>();
 
             randomFuncs.Add(new AtonFunction { Name = "WriteVar", PyCode = new string[] { "if 1>0:", "  print(\"yes\")" } });
-            Helper.SaveAtonFunction(randomFuncs[0]);
             randomFuncs.Add(new AtonFunction { Name = "WriteVar1" });
             randomFuncs.Add(new AtonFunction { Name = "WriteVar2" });
 

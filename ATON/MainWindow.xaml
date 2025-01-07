@@ -42,7 +42,7 @@
         <ribbon:Ribbon>
             <ribbon:RibbonTab Header="Home">
                 <ribbon:RibbonGroup Header="Save">
-                    <ribbon:RibbonButton Label="Save" SmallImageSource="./Resources/SaveImg.png" />
+                    <ribbon:RibbonButton Label="Save" SmallImageSource="./Resources/SaveImg.png" Command="{Binding SaveCommand}"/>
                     <ribbon:RibbonButton Label="Save All" SmallImageSource="./Resources/SaveImg.png"/>
                 </ribbon:RibbonGroup>
                 <ribbon:RibbonGroup Header="Insert">

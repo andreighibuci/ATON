@@ -15,7 +15,7 @@ namespace ATON.ViewModels
     public class ATONFunctionEditViewModel : INotifyPropertyChanged
     {
         //AtonFunction object to be altered via editor
-        private AtonFunction function;
+        public AtonFunction function;
 
         //Name Property to be binded for title
         private String _name;

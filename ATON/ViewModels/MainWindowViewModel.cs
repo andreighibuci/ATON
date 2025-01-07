@@ -28,7 +28,7 @@ namespace ATON.ViewModels
 
         //Command Declarations
         public ICommand FunctionEditCommand { get; set; }
-
+        public ICommand SaveCommand { get; set; }   
 
         //Initialization of Binded Elements
         public MainWindowViewModel()
@@ -39,6 +39,7 @@ namespace ATON.ViewModels
 
             //Initialisation of Commands
             FunctionEditCommand = new RelayCommand(onFunctionEditMethod);
+            SaveCommand = new RelayCommand(onSaveMethod);
 
             //Mocking Up List of Functions
             foreach (var func in Mockuper.CreateRandFuncs()) {
@@ -52,6 +53,26 @@ namespace ATON.ViewModels
             }
 
 
+        }
+
+        private void onSaveMethod(object obj)
+        {
+            try
+            {
+                //Create new list with code to be saved
+                String[] pyCodeLines = Helper.TextEditorString.Split("\r\n");
+                Helper.ATONFunctionEditViewModel.function.PyCode = pyCodeLines;
+
+                //Saving the code
+                Helper.SaveAtonFunction(Helper.ATONFunctionEditViewModel.function);
+
+                //Disable * from name after Save
+                Helper.ATONFunctionEditViewModel.Name = Helper.ATONFunctionEditViewModel.Name.Replace("*","");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
 
