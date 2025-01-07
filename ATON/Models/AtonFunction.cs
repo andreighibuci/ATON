@@ -20,7 +20,7 @@ namespace ATON.Models
 
 
        //Python Code Container
-       public String PyCode { get; set; } 
+       public String[] PyCode { get; set; } 
 
         
     }

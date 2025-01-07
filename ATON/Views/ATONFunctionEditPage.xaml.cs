@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using ATON.Models;
+using System.IO;
+using ATON.Helpers;
 
 namespace ATON.Views
 {
@@ -27,9 +29,16 @@ namespace ATON.Views
         public ATONFunctionEditPage(AtonFunction atonFunction)
         {
             InitializeComponent();
+
+
+
+            //Keeping editor options functions in the xaml area (break MVVM) due to easy handling over editor load in Avalon lib
             LoadPythonSyntaxHighlighting();
+            OpenFunction(atonFunction);
         }
 
+
+        //Highlight Python Syntax and load rulesets via Python.xshd file
         private void LoadPythonSyntaxHighlighting()
         {
             using (var stream = typeof(MainWindow).Assembly.GetManifestResourceStream("ATON.Resources.Python.xshd"))
@@ -37,6 +46,17 @@ namespace ATON.Views
             {
                 TextEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
             }
+        }
+
+        //Open desired function (if code is allready available)
+        private void OpenFunction(AtonFunction atonFunction)
+        {
+            //Check if file allready available to open
+            if (File.Exists(Helper.pCodePath + atonFunction.Name+".py"))
+            {
+                TextEditor.Load(Helper.pCodePath + atonFunction.Name + ".py");
+            }
+
         }
     }
 }
