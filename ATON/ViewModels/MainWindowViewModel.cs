@@ -28,7 +28,8 @@ namespace ATON.ViewModels
 
         //Command Declarations
         public ICommand FunctionEditCommand { get; set; }
-        public ICommand SaveCommand { get; set; }   
+        public ICommand SaveCommand { get; set; }
+        public ICommand AddCommand { get; set; }
 
         //Initialization of Binded Elements
         public MainWindowViewModel()
@@ -40,6 +41,7 @@ namespace ATON.ViewModels
             //Initialisation of Commands
             FunctionEditCommand = new RelayCommand(onFunctionEditMethod);
             SaveCommand = new RelayCommand(onSaveMethod);
+            AddCommand = new RelayCommand(onAddMethod);
 
             //Mocking Up List of Functions
             foreach (var func in Mockuper.CreateRandFuncs()) {
@@ -53,6 +55,12 @@ namespace ATON.ViewModels
             }
 
 
+        }
+
+        private void onAddMethod(object obj)
+        {
+            AddModal addModal = new AddModal();
+            addModal.ShowDialog();
         }
 
         private void onSaveMethod(object obj)

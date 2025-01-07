@@ -46,7 +46,7 @@
                     <ribbon:RibbonButton Label="Save All" SmallImageSource="./Resources/SaveImg.png" Command="{Binding SaveCommand}"/>
                 </ribbon:RibbonGroup>
                 <ribbon:RibbonGroup Header="Insert">
-                    <ribbon:RibbonButton Label="Add" SmallImageSource="./Resources/Add.png">
+                    <ribbon:RibbonButton Label="Add" SmallImageSource="./Resources/Add.png" Command="{Binding AddCommand}">
                     </ribbon:RibbonButton>
                     <ribbon:RibbonButton Label="Delete" SmallImageSource="./Resources/Delete.png"/>
                 </ribbon:RibbonGroup>

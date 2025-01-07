@@ -1,0 +1,45 @@
+﻿<Window x:Class="ATON.Views.AddModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATON.Views"
+        mc:Ignorable="d"
+        Title="AddModal" Height="225" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <!--Selection-->
+        <Border BorderThickness="1" BorderBrush="Black">
+            <StackPanel>
+             <DockPanel>
+                    <Image Source="../Resources/FunctionIcon.png" Height="14" Width="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2"/>
+                    <Label Content="Function"/>
+             </DockPanel>
+             <DockPanel>
+                    <Image Source="../Resources/TestcaseIcon.png" Height="14" Width="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2"/>
+                    <Label Content="Testcase"/>
+             </DockPanel>
+            </StackPanel>
+        </Border>
+        
+        <!--Name & Description Field-->
+        <StackPanel Grid.Column="1">
+            <DockPanel>
+                <Label Content="Name:"/>
+                <TextBox Width="Auto" Margin="5"/>
+            </DockPanel>
+            <StackPanel>
+                <Label Content="Description:"/>
+                <TextBox Width="Auto"  Height="100"  Margin="5"/>
+            </StackPanel>
+
+            <DockPanel HorizontalAlignment="Right">
+                <Button Content="OK" Width="50" Margin="0" HorizontalAlignment="Right"/>
+                <Button Content="Cancel" Width="50" HorizontalAlignment="Right"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>
