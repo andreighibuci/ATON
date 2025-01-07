@@ -1,5 +1,6 @@
 ﻿using ATON.Helpers;
 using ATON.Models;
+using ATON.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ATON.ViewModels
 {
@@ -23,6 +26,9 @@ namespace ATON.ViewModels
         //List with all availabe Tests that is automatically updated on delete and add
         public ObservableCollection<AtonTestCase> Tests { get; set; }
 
+        //Command Declarations
+        public ICommand FunctionEditCommand { get; set; }
+
 
         //Initialization of Binded Elements
         public MainWindowViewModel()
@@ -30,6 +36,9 @@ namespace ATON.ViewModels
             //Initialization of Observalbe lists so they can be updated all the time on GUI
             Functions = new ObservableCollection<AtonFunction>();
             Tests = new ObservableCollection<AtonTestCase>();
+
+            //Initialisation of Commands
+            FunctionEditCommand = new RelayCommand(onFunctionEditMethod);
 
             //Mocking Up List of Functions
             foreach (var func in Mockuper.CreateRandFuncs()) {
@@ -43,6 +52,19 @@ namespace ATON.ViewModels
             }
 
 
+        }
+
+
+        //Open Function Editor on Desired Element
+        private void onFunctionEditMethod(object obj)
+        {
+            //Retrieve FunctionName and search for corresponding Element in available functions
+            var funcName = (TextBlock)obj;
+            var atonFunction = Functions.Where(o => o.Name == funcName.Text).FirstOrDefault();
+
+            //Inject Function into editor and open (Maybe in future implement a TabControlling Behaviour)
+            ATONFunctionEditPage atonFuncEditor = new ATONFunctionEditPage(atonFunction);
+            Helper.EditorFrame.Navigate(atonFuncEditor);
         }
 
 

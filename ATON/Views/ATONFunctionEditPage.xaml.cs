@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using ATON.Models;
 
 namespace ATON.Views
 {
@@ -23,7 +24,7 @@ namespace ATON.Views
     /// </summary>
     public partial class ATONFunctionEditPage : Page
     {
-        public ATONFunctionEditPage()
+        public ATONFunctionEditPage(AtonFunction atonFunction)
         {
             InitializeComponent();
             LoadPythonSyntaxHighlighting();

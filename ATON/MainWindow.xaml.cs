@@ -1,4 +1,5 @@
-﻿using ATON.ViewModels;
+﻿using ATON.Helpers;
+using ATON.ViewModels;
 using ATON.Views;
 using System.Text;
 using System.Windows;
@@ -24,9 +25,12 @@ namespace ATON
         {
             InitializeComponent();
 
+            //Inject Helper with EditorFrame
+            Helper.EditorFrame = EditorFrame;
+
             //Beta Init of Editor
-            ATONFunctionEditPage atonFuncEditor = new ATONFunctionEditPage();
-            EditorFrame.Navigate(atonFuncEditor);
+          //  ATONFunctionEditPage atonFuncEditor = new ATONFunctionEditPage();
+          //  EditorFrame.Navigate(atonFuncEditor);
 
 
             //Initialisation of ViewModel and injection to DataContext for XAML Binding

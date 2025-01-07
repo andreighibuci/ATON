@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:ribbon="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:ATON" 
         mc:Ignorable="d"
@@ -13,7 +14,12 @@
         <DataTemplate x:Key="FunctionItemTemplate">
             <StackPanel Orientation="Horizontal">
                 <Image Source="./Resources/FunctionIcon.png" Width="16" Height="16" Margin="2"/>
-                <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0,0,0" Name="FuncName"/>
+
+                <!--Add Behaviour on Double Click-->
+                <StackPanel.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.FunctionEditCommand,  RelativeSource={RelativeSource AncestorType=Window}}"  CommandParameter="{Binding ElementName=FuncName}"/>
+                </StackPanel.InputBindings>
             </StackPanel>
         </DataTemplate>
 
@@ -21,6 +27,7 @@
             <StackPanel Orientation="Horizontal">
                 <Image Source="./Resources/TestcaseIcon.png" Width="16" Height="16" Margin="2"/>
                 <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+               
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -82,7 +89,7 @@
                 </Grid>
                 </Border>
                 <!--Testcase & Functions Editor Frame-->
-                <Frame Name="EditorFrame" Grid.Column="1">
+                <Frame Name="EditorFrame" Grid.Column="1" NavigationUIVisibility="Hidden">
                     
                 </Frame>
             </Grid>
