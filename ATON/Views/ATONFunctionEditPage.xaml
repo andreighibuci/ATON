@@ -17,11 +17,11 @@
         <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Padding="0"  Width="Auto" Height="Auto"  HorizontalAlignment="Left" Margin="0,0,0,0" Background="WhiteSmoke">
             <DockPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="Auto">
                 <Image Source="../Resources/FunctionIcon.png" Width="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Content="WriteVar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="11"/>
+                <Label Content="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="11"/>
                 <Button Content="X" Width="10" Height="10" FontSize="5" FontWeight="Bold" VerticalAlignment="Top" Background="OrangeRed" HorizontalAlignment="Right"/>
             </DockPanel>
         </Border>
-       
-        <avalonedit:TextEditor Name="TextEditor" FontFamily="Consolas" FontSize="14" ShowLineNumbers="True" Margin="0" Grid.Row="1"/>
+
+        <avalonedit:TextEditor Name="TextEditor" FontFamily="Consolas" FontSize="14" ShowLineNumbers="True" Margin="0" Grid.Row="1" TextChanged="TextEditor_TextChanged"/>
     </Grid>
 </Page>

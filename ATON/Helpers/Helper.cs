@@ -1,4 +1,5 @@
 ﻿using ATON.Models;
+using ATON.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,6 +17,12 @@ namespace ATON.Helpers
         
         //Navi Frame used throught MainWindow to collaborate with other VMs
         public static Frame EditorFrame { get; set; }
+
+        //Saving Text Changes on editor into static var
+        public static String TextEditorString;
+
+        //Use in UI .cs for changing name on modification
+        public static ATONFunctionEditViewModel ATONFunctionEditViewModel {  get; set; }    
 
 
         //Function to Save Current Python Code of a function

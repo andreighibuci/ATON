@@ -1,23 +1,12 @@
 ﻿using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Highlighting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 using ATON.Models;
 using System.IO;
 using ATON.Helpers;
+using ATON.ViewModels;
+using ICSharpCode.AvalonEdit;
 
 namespace ATON.Views
 {
@@ -26,15 +15,23 @@ namespace ATON.Views
     /// </summary>
     public partial class ATONFunctionEditPage : Page
     {
+        //bool to see if the text is loaded or edited
+        private bool TextEdit = false;  
+        //DataContext VM
+        private ATONFunctionEditViewModel viewModel;
         public ATONFunctionEditPage(AtonFunction atonFunction)
         {
             InitializeComponent();
+            viewModel = new ATONFunctionEditViewModel(atonFunction);
+            DataContext = viewModel;
 
-
+            
 
             //Keeping editor options functions in the xaml area (break MVVM) due to easy handling over editor load in Avalon lib
             LoadPythonSyntaxHighlighting();
             OpenFunction(atonFunction);
+
+            
         }
 
 
@@ -44,7 +41,7 @@ namespace ATON.Views
             using (var stream = typeof(MainWindow).Assembly.GetManifestResourceStream("ATON.Resources.Python.xshd"))
             using (var reader = new XmlTextReader(stream))
             {
-                TextEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+                TextEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);            
             }
         }
 
@@ -57,6 +54,16 @@ namespace ATON.Views
                 TextEditor.Load(Helper.pCodePath + atonFunction.Name + ".py");
             }
 
+        }
+
+        private void TextEditor_TextChanged(object sender, EventArgs e)
+        {
+            Helper.TextEditorString = TextEditor.Text;
+            if(!Helper.ATONFunctionEditViewModel.Name.Contains("*") && TextEdit)
+                Helper.ATONFunctionEditViewModel.Name = Helper.ATONFunctionEditViewModel.Name + "*";
+
+            //Allow to see changes
+            TextEdit = true;
         }
     }
 }
