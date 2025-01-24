@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATON.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace ATON.Views
     /// </summary>
     public partial class AddModal : Window
     {
+
+        private AddModalViewModel addModalViewModel;
         public AddModal()
         {
             InitializeComponent();
+            addModalViewModel = new AddModalViewModel();
+            DataContext = addModalViewModel;
         }
     }
 }

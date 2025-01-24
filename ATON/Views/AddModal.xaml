@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:ATON.Views"
         mc:Ignorable="d"
         Title="AddModal" Height="225" Width="500">
+    
+    <Window.Resources>
+        <Style x:Key="DockPanelStyle" TargetType="DockPanel">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -14,14 +24,24 @@
         <!--Selection-->
         <Border BorderThickness="1" BorderBrush="Black">
             <StackPanel>
-             <DockPanel>
+                <DockPanel Style="{StaticResource DockPanelStyle}">
                     <Image Source="../Resources/FunctionIcon.png" Height="14" Width="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2"/>
-                    <Label Content="Function"/>
-             </DockPanel>
-             <DockPanel>
+                    <Label Content="Function" Name="FuncType"/>
+
+                    <!--Add Behaviour on Click-->
+                    <DockPanel.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.SelectedFunElemCommand,  RelativeSource={RelativeSource AncestorType=Window}}"  CommandParameter="{Binding ElementName=FuncType}"/>
+                    </DockPanel.InputBindings>
+                </DockPanel>
+                <DockPanel Style="{StaticResource DockPanelStyle}">
                     <Image Source="../Resources/TestcaseIcon.png" Height="14" Width="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2"/>
-                    <Label Content="Testcase"/>
-             </DockPanel>
+                    <Label Content="Testcase" Name="TestType"/>
+
+                    <!--Add Behaviour on Click-->
+                    <DockPanel.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.SelectedTestElemCommand,  RelativeSource={RelativeSource AncestorType=Window}}"  CommandParameter="{Binding ElementName=TestType}"/>
+                    </DockPanel.InputBindings>
+                </DockPanel>
             </StackPanel>
         </Border>
         
